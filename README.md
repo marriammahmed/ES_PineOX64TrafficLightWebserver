@@ -20,14 +20,14 @@ The final project consisted of two parts:
 <img src="https://i.imgur.com/HzvZLkv.png" height="80%" width="80%" alt="Traffic Light Setup"/>
 
 <h2>Project Obstacle and Solution</h2>
-Pine Ox64 and similar boards are resource-constrained, meaning CPU, RAM, and storage are limited. Running a full Apache + PHP stack for GPIO control is heavy because:
-Apache: full-featured web server, handles requests, logging, modules — consumes CPU and memory.
-PHP: interpreted scripting language; adds runtime overhead.
-Embedded boards: usually run lightweight OS, limited RAM (often <1 GB) and CPU power.
-Using JavaScript (probably with a lightweight HTTP server or direct GPIO library) is much lighter:
-Fewer dependencies.
-Lower memory footprint.
-Faster response for GPIO control.
+Pine Ox64 and similar boards are resource-constrained, meaning CPU, RAM, and storage are limited. Running a full Apache + PHP stack for GPIO control is heavy because:<br />
+Apache: full-featured web server, handles requests, logging, modules — consumes CPU and memory.<br />
+PHP: interpreted scripting language; adds runtime overhead.<br />
+Embedded boards: usually run lightweight OS, limited RAM (often <1 GB) and CPU power.<br /><br /><br />
+Using JavaScript (probably with a lightweight HTTP server or direct GPIO library) is much lighter:<br />
+Fewer dependencies.<br />
+Lower memory footprint.<br />
+Faster response for GPIO control.<br /><br />
 ✅ In short: Apache + PHP was too heavy for the board’s architecture; switching to JS reduced load and made real-time control feasible.
 
 <h2>Project Demo (Video)</h2>
