@@ -6,8 +6,7 @@ The Ox64 is a RISC-V based single-board computer based on the Bouffalo Lab BL808
 <br />
 The final project consisted of two parts:  
 1. <b>Custom OS Development</b> — built with Buildroot for Pine Ox64, demonstrating OS fundamentals in an embedded environment.  
-2. <b>Traffic Light Web Server</b> — controlled GPIO pins for traffic light simulation. Initially designed with Raspberry Pi + Apache but finalized using JavaScript for onboard control. 
-The traffic light server was initially implemented with Raspberry Pi + Apache to control GPIO pins but was later replaced with a <b>JavaScript solution</b> to manage the onboard traffic light system.  
+2. <b>Traffic Light Web Server</b> — controlled GPIO pins for traffic light simulation.The traffic light server was initially implemented with Raspberry Pi + Apache to control GPIO pins but was later replaced with a <b>JavaScript solution</b> to manage the onboard traffic light system after realising that Apache severs are too heavy for the board architecture 
 <br />
 
 <h2>Project Detail Guideline</h2>
