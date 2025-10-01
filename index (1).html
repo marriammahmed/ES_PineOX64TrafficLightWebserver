@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Traffic Light </title>
+  <style>
+
+    @import url('https://fonts.googleapis.com/css?family=Trirong');
+
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: 'Trirong', sans-serif;
+    }
+
+    body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        margin: 0;
+        background-color: lightblue;
+    }
+
+    h1{
+        position: absolute;
+        top: 0;
+        text-align: center;
+        padding-top: 100px;
+        color: black;
+    }
+
+    .container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        height: 250px;
+        width: 80px;
+        padding: 20px 0;
+        border-radius: 50px;
+        background-color: black;
+    }
+
+    .circle{
+        position: relative;
+        height: 45px;
+        width: 45px;
+        border-radius: 100%;
+        background-color: black;
+    }
+
+    .circle.col1{
+        background-color: red;
+        box-shadow: 0 0 60px 10px red;
+    }
+
+    .circle.col2{
+        background-color: yellow;
+        box-shadow: 0 0 60px 10px yellow;
+    }
+
+    .circle.col3{
+        background-color: green;
+        box-shadow: 0 0 60px 10px green;
+    }
+  </style>
+</head>
+<body>
+  <h1>Traffic Signal Control</h1>
+  <div class="container">
+    <div class="circle col1" color="col1"></div>
+    <div class="circle"   color="col2"></div>
+    <div class="circle"   color="col3"></div>
+  </div>
+
+  <script>
+    // === script.js ===
+
+    const circles = document.querySelectorAll('.circle');
+    let flashInterval = null;
+
+    async function sendColor(color) {
+        let endpoint = "/cgi-bin/" + color + "_light.sh";
+
+        try {
+         const response = await fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: 'color=' + encodeURIComponent(color)
+        });
+
+         if (!response.ok) {
+            throw new Error("Server error: " + response.status);
+        }
+
+        const data = await response.json();
+        console.log("Response:", data);
+
+        } catch (error) {
+        console.error("Fetch error:", error);
+  }
+}
+
+
+    function light(colorClass) {
+      circles.forEach(c => {
+        c.classList.remove('col1','col2','col3');
+        if (c.getAttribute('color') === colorClass) {
+          c.classList.add(colorClass);
+        }
+      });
+    }
+
+    function lightMulti(colorClasses) {
+    circles.forEach(c => c.classList.remove('col1','col2','col3'));
+    colorClasses.forEach(cc => {
+      document
+        .querySelector(`.circle[color="${cc}"]`)
+        .classList.add(cc);
+    });
+  }
+
+    function stopFlashing() {
+      if (flashInterval) {
+        clearInterval(flashInterval);
+        flashInterval = null;
+      }
+    }
+
+    function delay(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    function goDirect(colorClass) {
+      stopFlashing();
+      const map = { col1: 'red', col2: 'yellow', col3: 'green' };
+      sendColor(map[colorClass]);
+      light(colorClass);
+    }
+
+    async function runGreenSequence() {
+      stopFlashing();
+      sendColor('red');
+      lightMulti(['col1']);
+      await delay(500);
+      sendColor('red_yellow'); // add a red_yellow.sh file
+      lightMulti(['col1','col2']);
+      await delay(500);
+      sendColor('green');
+      lightMulti(['col3']);
+    }
+
+    async function runRedSequence() {
+      stopFlashing();
+      sendColor('green');
+      light('col3');
+      await delay(500);
+      sendColor('yellow');
+      light('col2');
+      await delay(500);
+      sendColor('red');
+      light('col1');
+    }
+
+    function startYellowFlashing() {
+  stopFlashing();
+  circles.forEach(c => c.classList.remove('col1','col2','col3'));
+  const yellowCircle = document.querySelector('.circle[color="col2"]');
+
+  flashInterval = setInterval(() => {
+    if (yellowCircle.classList.contains('col2')) {
+      yellowCircle.classList.remove('col2');
+      sendColor('no');
+    } else {
+      yellowCircle.classList.add('col2');
+      sendColor('yellow');
+    }
+  }, 500);
+}
+
+    // initialize
+    light('col1');
+
+    circles.forEach(circle => {
+  circle.addEventListener('click', () => {
+    const color = circle.getAttribute('color');
+    const isFlashing = !!flashInterval;
+
+    if (!isFlashing && circle.classList.contains(color)) {
+      return;
+    }
+
+    if (isFlashing && (color === 'col1' || color === 'col3')) {
+      goDirect(color);
+      return;
+    }
+
+    switch (color) {
+      case 'col3': runGreenSequence();    break;
+      case 'col1': runRedSequence();      break;
+      case 'col2': startYellowFlashing(); break;
+    }
+  });
+});
+  </script>
+</body>
+</html>

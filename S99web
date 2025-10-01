@@ -1,0 +1,24 @@
+#!/bin/sh
+
+WEBPAGE="usr/htdocs/index.html"
+
+source $WEBPAGE
+
+cat $WEBPAGE
+
+
+start() {
+    
+    echo "Traffic Light Web Ready: http://$(hostname -I | awk '{print $1}')"
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    *)
+        echo "Usage: $0 start"
+        exit 1
+esac
+
+exit 0
