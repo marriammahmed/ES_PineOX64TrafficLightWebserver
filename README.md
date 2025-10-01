@@ -22,8 +22,7 @@ The traffic light server was initially implemented with Raspberry Pi + Apache to
 
 <h2>Project Demo (Video)</h2>
 
-📹 Watch the demo here:  
-[![Watch the video](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=VIDEO_ID)  
+📹 Watch the demo here: <video src="ES_PineOX64TrafficLightWebserver/final_demo.mp4" controls width="600"></video>
 
 
 <h2>Languages,Environments and Utilities Used</h2>
