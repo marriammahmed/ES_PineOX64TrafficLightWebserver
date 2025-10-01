@@ -18,7 +18,7 @@ The traffic light server was initially implemented with Raspberry Pi + Apache to
 5. Deploy traffic light control server (attempted Apache, finalized JS control).  <br />
 6. Validate traffic light operations and system response.  
 <br />
-
+<img src="https://i.imgur.com/HzvZLkv.png" height="80%" width="80%" alt="Traffic Light Setup"/>
 
 <h2>Project Demo (Video)</h2>
 
@@ -56,7 +56,7 @@ Traffic light hardware setup: <br/>
 <br />
 <br />
 Web server interface: <br/>
-<img src="https://via.placeholder.com/600x400.png?text=Apache+Interface" height="80%" width="80%" alt="Apache Interface"/>
+<img src="https://i.imgur.com/cdpdPFT.jpeg" height="80%" width="80%" alt="Apache Interface"/>
 <br />
 <br />
 JavaScript control panel (final implementation): <br/>
