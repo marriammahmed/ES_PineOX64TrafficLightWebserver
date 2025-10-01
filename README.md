@@ -60,7 +60,7 @@ Web server interface: <br/>
 <br />
 <br />
 JavaScript control panel (final implementation): <br/>
-<img src="https://via.placeholder.com/600x400.png?text=JS+Traffic+Light" height="80%" width="80%" alt="JS Traffic Light"/>
+<img src="https://i.imgur.com/C01eIqe.jpeg" height="80%" width="80%" alt="JS Traffic Light"/>
 <br />
 <br />
 </p>
