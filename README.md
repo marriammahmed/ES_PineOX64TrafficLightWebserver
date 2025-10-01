@@ -21,7 +21,7 @@ The final project consisted of two parts:
 
 <h2>Project Demo (Video)</h2>
 
-📹 Watch the demo here: [final_demo.mp4](ES_PineOX64TrafficLightWebserver/final_demo.mp4)
+📹 Watch the demo here: [final_demo.mp4](final_demo.mp4)
 
 
 <h2>Languages,Environments and Utilities Used</h2>
