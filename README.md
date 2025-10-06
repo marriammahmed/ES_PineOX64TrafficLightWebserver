@@ -8,7 +8,20 @@ The final project consisted of two parts:
 1. <b>Custom OS Development</b> — built with Buildroot for Pine Ox64, demonstrating OS fundamentals in an embedded environment.  
 2. <b>Traffic Light Web Server</b> — controlled GPIO pins for traffic light simulation.The traffic light server was initially implemented with Raspberry Pi + Apache + PHP to control GPIO pins but was later replaced with a <b>JavaScript solution</b> to manage the onboard traffic light system after realising that Apache severs are too heavy for the board architecture 
 <br />
+<h2>Course Outcomes & Skills</h2>
+This course and project built advanced embedded systems engineering skills—bridging hardware, software, and networking layers for real-time control applications.  
+Key outcomes and skills include:
 
+- <b>Operating System Customization:</b> Configured and compiled a minimal Linux-based OS using Buildroot, tailored to the Pine Ox64 architecture.  
+- <b>Embedded Development:</b> Programmed GPIO interfaces to control sensors, LEDs, and actuators under strict memory and performance constraints.  
+- <b>System Optimization & Performance Engineering:</b> Diagnosed and replaced heavy Apache/PHP stack with lightweight JavaScript-based solutions, improving speed and efficiency.  
+- <b>Hardware–Software Integration:</b> Developed an end-to-end automation system combining low-level C control logic with a web interface for real-time device interaction.  
+- <b>Networking & Web Control:</b> Implemented a local webserver capable of managing hardware I/O operations securely through browser-based commands.  
+- <b>RTOS Concepts & Resource Management:</b> Gained understanding of process scheduling, interrupt handling, and timing mechanisms for deterministic system behavior.  
+- <b>Troubleshooting & Cross-Compilation:</b> Managed buildroot dependencies, debugging, and board flashing to deploy and validate the custom firmware.  
+
+💡 *This project highlights technical versatility across embedded software development, system programming, hardware integration, and performance tuning—skills directly applicable to IoT, robotics, and systems engineering roles.*
+<br /><br />
 <h2>Project Detail Guideline</h2>
 1. Configure Buildroot & cross-compilation toolchain for Pine Ox64.  <br />
 2. Build minimal Linux-based OS image.  <br />
@@ -49,13 +62,6 @@ Faster response for GPIO control.<br /><br />
 - <b>Linux Buildroot Environment</b>  
 
 
-<h2>Course Outcomes</h2>
-
-- Programmed microcontrollers; interfaced sensors, actuators  
-- Low-level C programming, memory-constrained environments  
-- Basics of real-time operating systems (RTOS)  
-- Designed hardware-software integration for automation systems  
-<br />
 
 <h2>Program Walk-through (Photos)</h2>
 
